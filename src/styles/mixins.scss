@@ -1,0 +1,18 @@
+@mixin flex-sb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin button-none {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@mixin input-none {
+  border: none;
+  background: none;
+  outline: none;
+}

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import "styles/vars";
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: .2px;
+  color: $black;
+}
+
+body {
+  font-size: 14px;
+  background: $input-background-color;
+}
+
+ul {
+  li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+span {
+  word-wrap: break-word;
+}

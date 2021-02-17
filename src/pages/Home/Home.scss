@@ -1,0 +1,47 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.home {
+  position: relative;
+  padding-top: 34px;
+  padding-right: 12.5px;
+  padding-left: 12.5px;
+  max-width: 950px;
+  width: 100%;
+  margin: 0 auto;
+
+  &__content {
+
+  }
+
+  &__user-info {
+    @include flex-sb;
+    position: fixed;
+    right: 297px;
+    top: 104px;
+    max-width: 295px;
+    width: 100%;
+
+    &-inner {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__user-data {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__user-username {
+  }
+
+  &__user-fullname {
+    color: $light-grey;
+  }
+
+  &__user-link {
+    color: $blue;
+  }
+}

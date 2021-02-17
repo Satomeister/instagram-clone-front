@@ -1,0 +1,68 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.fullPostModal {
+  display: flex;
+  height: 600px;
+  min-width: 400px;
+  background: $white;
+
+  .post__content {
+    width: auto;
+
+    img {
+      height: 600px;
+      width: auto;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 335px;
+
+    .post-actions {
+      padding-top: 10px;
+    }
+
+    .post__date {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__info {
+    @include flex-sb;
+    padding: 20px 17px 15px 17px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+
+    &-username {
+      margin-left: 15px;
+    }
+  }
+
+  &__feedback {
+    flex-grow: 1;
+    max-height: 385px;
+    padding: 0 17px;
+    border-bottom: 1px solid $border-color;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.send-comment-input {
+  min-height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

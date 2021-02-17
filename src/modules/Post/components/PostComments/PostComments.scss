@@ -1,0 +1,29 @@
+@import "../../../../styles/vars";
+@import "../../../../styles/mixins";
+
+.post-comments {
+  &__view-all {
+    display: block;
+    color: $light-grey;
+    margin-top: 7px;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+  &__item {
+    position: relative;
+    margin-top: 7px;
+    padding: 0 15px;
+    &-username {
+      font-weight: 700;
+    }
+    &-text {
+
+    }
+    &-likes {
+      @include button-none;
+      position: absolute;
+      right: 15px;
+      top: 5px;
+    }
+  }
+}

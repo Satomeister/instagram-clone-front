@@ -1,0 +1,54 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.input__wrapper {
+  position: relative;
+  height: 38px;
+  width: 100%;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  margin-top: 20px;
+  background: $input-background-color;
+  cursor: text;
+
+  input {
+    @include input-none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    font-size: 12px;
+    outline: none;
+    &:focus,  &:valid {
+      top: 7px;
+      & ~ label {
+        top: 5px;
+        font-size: 9px;
+        line-height: 1;
+      }
+    }
+  }
+
+  label {
+    position: absolute;
+    left: 10px;
+    font-size: 12px;
+    line-height: 38px;
+    color: $light-grey;
+    user-select: none;
+    cursor: text;
+  }
+
+  &.error {
+    border: 1px solid $red;
+    label {
+      color: $red;
+    }
+  }
+}
+
+.helper__text {
+  padding-top: 3px;
+  font-size: 13px;
+  color: $red;
+}

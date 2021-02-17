@@ -1,0 +1,40 @@
+@import "../../../../styles/vars";
+@import "../../../../styles/mixins";
+
+.user-dropdown__list {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0 0;
+}
+
+.user-dropdown__item {
+  a {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 15px;
+    span {
+      padding-left: 10px;
+    }
+    svg {
+      font-size: 19px;
+    }
+    &:hover {
+      background: $input-background-color;
+    }
+  }
+}
+
+.logout-button {
+  @include button-none;
+  height: 37px;
+  width: 100%;
+  margin-bottom: 5px;
+  padding-left: 15px;
+  border-top: 1px solid $border-color;
+  text-align: left;
+  font-size: 14px;
+  &:hover {
+    background: $input-background-color;
+  }
+}

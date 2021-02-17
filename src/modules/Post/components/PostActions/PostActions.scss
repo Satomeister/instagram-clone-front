@@ -1,0 +1,36 @@
+@import "../../../../styles/vars";
+@import "../../../../styles/mixins";
+
+.post-actions__wrapper {
+}
+
+.post-actions {
+  @include flex-sb;
+  padding: 7px 15px 0;
+  &__left, &__right {
+    button {
+      @include button-none;
+      svg {
+        margin-right: 7px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+    }
+  }
+  &__left {
+
+  }
+  &__right {
+
+  }
+}
+
+.likes-count {
+  margin: 7px 0 7px 15px;
+}
+
+.post__date {
+  padding-left: 15px;
+  font-size: 10px;
+  color: $light-grey;
+}

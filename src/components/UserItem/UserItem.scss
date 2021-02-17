@@ -1,0 +1,19 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  &__data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    &-name {
+      color: $black;
+    }
+    &-fullname {
+      color: $light-grey;
+    }
+  }
+}

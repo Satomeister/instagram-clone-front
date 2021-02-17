@@ -1,0 +1,22 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.stories-list-wrapper {
+  position: relative;
+  width: 600px;
+  margin-bottom: 25px;
+}
+
+.stories-list {
+  max-width: 600px;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  background: $white;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}

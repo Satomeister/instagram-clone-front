@@ -1,0 +1,25 @@
+@import "../../styles/vars";
+
+.avatar-withStory {
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar-canvas {
+  position: absolute;
+  left: -3px;
+  right: 0;
+  top: -3px;
+  bottom: 0;
+}
+
+.avatar-wrapper {
+  z-index: 1;
+  img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    background: $input-background-color;
+    border-radius: 100%;
+  }
+}

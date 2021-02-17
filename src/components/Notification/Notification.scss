@@ -1,0 +1,20 @@
+@import "../../styles/mixins";
+@import "../../styles/vars";
+
+.notification {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55px;
+  background: rgba($black, .9);
+  backdrop-filter: blur(3px);
+  z-index: 11;
+
+  &__text {
+    margin-left: 20px;
+    line-height: 55px;
+    font-size: 16px;
+    color: $white;
+  }
+}

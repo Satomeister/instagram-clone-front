@@ -1,0 +1,38 @@
+@import "../../../../styles/vars";
+@import "../../../../styles/mixins";
+
+.send-comment-input {
+  @include flex-sb;
+  margin-top: 7px;
+  padding: 0 10px;
+  border-top: 1px solid $border-color;
+  min-height: 55px;
+
+  svg {
+    font-size: 25px;
+    margin-right: 10px;
+    margin-bottom: 2px;
+  }
+
+  textarea {
+    @include input-none;
+    width: 90%;
+    height: 18px;
+    max-height: 100px;
+    margin: 10px 0;
+    resize: none;
+    &::placeholder {
+      color: $light-grey;
+    }
+  }
+
+  button {
+    @include button-none;
+    padding: 10px;
+    color: $blue;
+    &:disabled {
+      cursor: auto;
+      color: rgba($blue, .5);
+    }
+  }
+}

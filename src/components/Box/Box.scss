@@ -1,0 +1,12 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.box {
+  position: absolute;
+  top: 40px;
+  right: -20px;
+  background: $white;
+  box-shadow: 0 0 7px rgba($black, .21);
+  border-radius: 5px;
+  z-index: 3;
+}

@@ -1,0 +1,86 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.edit-profile {
+  max-width: 700px;
+  width: 100%;
+  margin: 80px auto;
+  padding: 25px 0;
+  border: 1px solid $border-color;
+  background: $white;
+
+  &__user-data {
+    display: flex;
+    align-items: center;
+    margin-left: 180px;
+
+    span {
+      margin-left: 30px;
+      font-size: 20px;
+    }
+
+    .edit-profile-photo__button {
+      margin-left: 30px;
+      padding-left: 0;
+      padding-top: 0;
+    }
+  }
+
+  &__list {
+
+  }
+
+  &__item {
+    margin-top: 20px;
+
+    &-inner {
+      display: flex;
+    }
+
+    &-label {
+      width: 220px;
+      margin-right: 27px;
+      text-align: right;
+      line-height: 37px;
+      font-weight: 500;
+    }
+
+    &-extra-text {
+      width: 355px;
+      margin-top: 10px;
+      margin-left: 248px;
+      font-size: 12px;
+      color: $light-grey;
+
+      span {
+        display: block;
+        font-weight: 600;
+        color: $light-grey;
+      }
+    }
+
+    .input__wrapper {
+      width: 355px;
+      margin-top: 0;
+      background: $white;
+    }
+
+    .textarea {
+      width: 355px;
+      height: 70px;
+    }
+  }
+
+  .submit-button {
+    margin-top: 20px;
+    margin-left: 248px;
+  }
+
+  .submit-error {
+    padding-top: 5px;
+    font-size: 14px;
+    text-align: center;
+    color: $red;
+  }
+
+}

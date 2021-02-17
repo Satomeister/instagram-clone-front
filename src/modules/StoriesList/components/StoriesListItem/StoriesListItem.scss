@@ -1,0 +1,33 @@
+@import "../../../../styles/vars";
+
+.story-item {
+  $item: &;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__username {
+    text-align: center;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 75px;
+    height: 1.2em;
+    white-space: nowrap;
+  }
+  &__avatar {
+    position: relative;
+    cursor: pointer;
+    &-border {
+      position: absolute;
+      left: -3px;
+      right: 0;
+      top: -3px;
+      bottom: 0;
+    }
+  }
+  &--watched {
+    #{$item}__username {
+      color: $light-grey;
+    }
+  }
+}

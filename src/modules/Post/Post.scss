@@ -1,0 +1,35 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.post {
+  border: 1px solid $border-color;
+  max-width: 600px;
+  width: 100%;
+  margin-bottom: 25px;
+  background: $white;
+  &__top {
+    height: 60px;
+    @include flex-sb;
+    padding: 0 13px;
+  }
+  &__user-info {
+    display: flex;
+    align-items: center;
+  }
+  &__username {
+    margin-left: 13px;
+  }
+  &__description {
+    padding: 0 15px;
+    word-wrap: break-word;
+    &-username {
+      font-weight: 700;
+    }
+    &-more {
+      font-size: 13px;
+      margin-left: 7px;
+      color: $light-grey;
+      cursor: pointer;
+    }
+  }
+}

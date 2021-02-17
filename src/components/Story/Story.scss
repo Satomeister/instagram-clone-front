@@ -1,0 +1,84 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.story__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.story {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 95vh;
+  width: 55vh;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #434343, rgba($white, .7));
+  transform: scale(.4);
+  transition: all .3s;
+  margin-left: -6rem;
+  margin-right: -6rem;
+  cursor: pointer;
+  &--active {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    transform: scale(1);
+    cursor: auto;
+  }
+  video {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+  &__data {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    left: 10px;
+    &-top {
+      width: 98%;
+      height: 3px;
+      margin: 0 auto 20px;
+      border-radius: 5px;
+      background: $light-grey;
+    }
+    &-duration {
+      height: 100%;
+      max-width: 100%;
+      min-width: 0;
+      border-radius: 5px;
+      background: $white;
+      transition: width .1s;
+    }
+    &-bottom {
+      @include flex-sb;
+    }
+    &-user {
+      display: flex;
+      align-items: center;
+      margin: 0 5px;
+      span {
+        margin-left: 10px;
+        color: $white;
+        font-size: 18px;
+        &:last-child {
+          color: $light-grey;
+        }
+      }
+    }
+    &-controls {
+      font-size: 28px;
+      svg {
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      path {
+        color: $white;
+      }
+    }
+  }
+}

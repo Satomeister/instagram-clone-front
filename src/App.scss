@@ -1,0 +1,54 @@
+@import "./styles/vars";
+@import "./styles/mixins";
+
+.container {
+  margin-top: 54px;
+}
+
+.empty-app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  svg {
+    font-size: 60px;
+    transform: translateY(-50%);
+    path {
+      color: $light-grey;
+    }
+  }
+}
+
+.button {
+  @include button-none;
+  display: block;
+  padding: 6px 10px;
+  color: $blue;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: all .1s;
+  &:disabled, &:active {
+    color: rgba($blue, .6);
+  }
+  &:disabled {
+    cursor: auto;
+  }
+}
+
+.primary-button {
+  background: $blue;
+  color: $white;
+  &:disabled, &:active {
+    color: rgba($white, .8);
+    background: rgba($blue, .3);
+  }
+}
+
+.secondary-button {
+  background: none;
+  color: $black;
+  border: 1px solid $border-color;
+  &:disabled, &:active {
+    color: rgba($black, .8);
+  }
+}
