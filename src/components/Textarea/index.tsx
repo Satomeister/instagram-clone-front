@@ -1,11 +1,12 @@
 import React, { ChangeEvent, FC } from "react";
-import classNames from "classnames";
 
 import "./Textarea.scss";
 
 interface TextareaProps {
   name: string;
-  onChange: (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange: (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => void;
   value: string;
   error?: string;
 }
@@ -19,7 +20,7 @@ const Textarea: FC<TextareaProps> = ({
   return (
     <div>
       <textarea
-        className={'textarea'}
+        className="textarea"
         onChange={onChange}
         onBlur={onChange}
         value={value || ""}

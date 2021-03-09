@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { FC, useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -15,14 +15,17 @@ import Box from "../../../Box";
 import {
   selectAuthUserData,
   selectLogoutLoadingStatus,
-} from "../../../../store/ducks/user/selectors";
-import { fetchLogout } from "../../../../store/ducks/user/actionCreators";
+} from "../../../../store/ducks/authUser/selectors";
+import { fetchLogout } from "../../../../store/ducks/authUser/actionCreators";
 import { LoadingStatus } from "../../../../store/types";
 import ModalWrapper from "../../../ModalWrapper";
+import ModalWindow from "../../../ModalWindow";
 
 const UserDropdown: FC = (): JSX.Element => {
   const dispatch = useDispatch();
+
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+
   const user = useSelector(selectAuthUserData);
   const logoutLoadingStatus = useSelector(selectLogoutLoadingStatus);
 
@@ -34,10 +37,12 @@ const UserDropdown: FC = (): JSX.Element => {
     <>
       {logoutLoadingStatus === LoadingStatus.LOADING && (
         <ModalWrapper onClose={() => {}}>
-          <div className="logout-modal">
-            <h3>Logging Out</h3>
-            <p>You need to log back in</p>
-          </div>
+          <ModalWindow height={180}>
+            <div className="logout-modal">
+              <h3>Logging Out</h3>
+              <p>You need to log back in</p>
+            </div>
+          </ModalWindow>
         </ModalWrapper>
       )}
       <div
@@ -45,7 +50,7 @@ const UserDropdown: FC = (): JSX.Element => {
         style={{ position: "relative" }}
         className="header-navigation__item"
       >
-        <Avatar size={25} />
+        <Avatar url={user?.avatar} size={25} />
         {dropdownOpen && (
           <div className="arrow-bottom">
             <div className="arrow-bottom__inner" />

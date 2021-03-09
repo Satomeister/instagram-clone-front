@@ -1,0 +1,8 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.modal-window {
+  width: 400px;
+  border-radius: 12px;
+  background: $white;
+}

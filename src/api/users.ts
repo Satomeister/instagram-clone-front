@@ -1,6 +1,6 @@
 import axios from "../core/axios";
 
-export const UsersApi = {
+const UsersApi = {
   findUsers: async (payload: string) => {
     const { data } = await axios.get(`/users/?user=${payload}`);
     return data;
@@ -17,4 +17,10 @@ export const UsersApi = {
     const { data } = await axios.put(`/users/unfollow/${userId}`);
     return data;
   },
+  getSuggestions: async () => {
+    const { data } = await axios.get(`/users/suggestions`);
+    return data;
+  },
 };
+
+export default UsersApi;

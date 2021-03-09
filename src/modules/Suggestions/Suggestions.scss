@@ -1,0 +1,51 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.suggestions {
+  width: 100%;
+  margin-top: 20px;
+
+  &__title {
+    font-size: 14px;
+    font-weight: 500;
+    color: $light-grey;
+  }
+
+  &__list {
+    margin-top: 5px;
+  }
+
+  &__item {
+    @include flex-sb;
+
+    &-inner {
+      display: flex;
+      align-items: center;
+      padding: 7px 0;
+
+      &-data {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+      }
+
+      &-name {
+        color: $black;
+      }
+
+      &-text {
+        font-size: 12px;
+        color: $light-grey;
+      }
+    }
+
+    .user-item {
+      padding: 7px 0;
+    }
+
+    .button {
+      font-size: 11px;
+      font-weight: 400;
+    }
+  }
+}

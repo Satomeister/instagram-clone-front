@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   &__icon {
     border: 2px solid $black;
     display: flex;
@@ -17,12 +18,20 @@
     height: 60px;
     border-radius: 100%;
     font-size: 40px;
+
     svg {
       margin-top: 6px;
     }
   }
+
   p {
     display: inline-block;
     margin-top: 15px;
   }
+}
+
+.activity-bar__title {
+  color: $black;
+  font-size: 14px;
+  padding: 15px 0 0 15px;
 }

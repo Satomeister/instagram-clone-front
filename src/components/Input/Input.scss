@@ -19,8 +19,11 @@
     padding-left: 10px;
     font-size: 12px;
     outline: none;
-    &:focus,  &:valid {
+
+    &:focus,
+    &:valid {
       top: 7px;
+
       & ~ label {
         top: 5px;
         font-size: 9px;
@@ -41,6 +44,7 @@
 
   &.error {
     border: 1px solid $red;
+
     label {
       color: $red;
     }

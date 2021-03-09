@@ -1,0 +1,33 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.dots-menu {
+  @include button-none;
+  padding: 10px;
+
+  div {
+    position: relative;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: $black;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: $black;
+      border-radius: 50%;
+    }
+
+    &:before {
+      left: -6.4px;
+    }
+
+    &:after {
+      right: -6.4px;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@import "../../../../styles/vars";
+@import "../../../../styles/mixins";
+
+.reply__text {
+  margin-right: 15px;
+  a {
+    display: inline-block;
+    font-weight: 300;
+    color: $blue;
+  }
+}

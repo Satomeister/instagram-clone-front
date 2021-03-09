@@ -4,9 +4,9 @@ import {
   EditProfilePayload,
   LoginPayload,
   SignUpPayload,
-} from "../store/ducks/user/contracts/state";
+} from "../store/ducks/authUser/contracts/state";
 
-export const AuthUserApi = {
+const AuthUserApi = {
   signup: async (payload: SignUpPayload) => {
     const { data } = await axios.post("/user/signup", payload);
     return data;
@@ -29,7 +29,7 @@ export const AuthUserApi = {
   updateAvatar: async (payload: FormData | null) => {
     if (payload) {
       const { data } = await axios.put("/user/avatar/update", payload, {
-        headers: { "Content-Type": "multipart/form-data", },
+        headers: { "Content-Type": "multipart/form-data" },
       });
       return data;
     } else {
@@ -37,4 +37,16 @@ export const AuthUserApi = {
       return data;
     }
   },
+  getSavedPosts: async () => {
+    const { data } = await axios.get("/user/saved");
+    return data;
+  },
+  savePost: async (postId: string) => {
+    await axios.post("/user/save", { postId });
+  },
+  unSavePost: async (postId: string) => {
+    await axios.post("/user/unsave", { postId });
+  },
 };
+
+export default AuthUserApi;

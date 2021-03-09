@@ -11,21 +11,22 @@
   border-radius: 100%;
   transform: translateY(-50%);
   border: none;
-  background: rgba(#262626, .6);
+  background: rgba(#262626, 0.6);
   z-index: 1;
   cursor: pointer;
-  transition: background-color, .3s;
+  transition: background-color, 0.3s;
   outline: none;
-box-shadow: 0 0 4px $light-grey;
+  box-shadow: 0 0 4px $light-grey;
+
   &:hover {
-    background: rgba(#262626, .7);
+    background: rgba(#262626, 0.7);
   }
 
   div {
     width: 7px;
     height: 7px;
-    border-top: 3px solid rgba($white, .9);
-    border-right: 3px solid rgba($white, .9);
+    border-top: 3px solid rgba($white, 0.9);
+    border-right: 3px solid rgba($white, 0.9);
     border-radius: 1px;
   }
 

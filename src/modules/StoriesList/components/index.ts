@@ -1,1 +1,1 @@
-export {default as StoriesListItem} from './StoriesListItem'
+export { default as StoriesListItem } from "./StoriesListItem";

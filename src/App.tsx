@@ -1,13 +1,13 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, Suspense, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineInstagram as InstagramIcon } from "react-icons/all";
 
 import "./App.scss";
 
-import { Auth, Main, Stories } from "./pages";
-import { fetchGetMe } from "./store/ducks/user/actionCreators";
-import { selectGetMeLoadingStatus } from "./store/ducks/user/selectors";
+import { AuthPage, Main, StoriesPage } from "./pages";
+import { fetchGetMe } from "./store/ducks/authUser/actionCreators";
+import { selectGetMeLoadingStatus } from "./store/ducks/authUser/selectors";
 import { LoadingStatus } from "./store/types";
 
 const App: FC = (): JSX.Element => {
@@ -32,11 +32,13 @@ const App: FC = (): JSX.Element => {
 
   return (
     <div>
-      <Switch>
-        <Route path="/stories" component={Stories} />
-        <Route path="/auth" component={Auth} />
-        <Route path="/" component={Main} />
-      </Switch>
+      <Suspense fallback={<div />}>
+        <Switch>
+          <Route exact path="/stories/:storyId" component={StoriesPage} />
+          <Route path="/auth" component={AuthPage} />
+          <Route path="/" component={Main} />
+        </Switch>
+      </Suspense>
     </div>
   );
 };

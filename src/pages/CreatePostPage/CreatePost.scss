@@ -1,0 +1,22 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.media-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: 245px;
+
+  img,
+  video {
+    margin-left: 5px;
+    width: 100px;
+    height: auto;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 0 7px $black;
+    }
+  }
+}

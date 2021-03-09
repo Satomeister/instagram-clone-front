@@ -21,6 +21,7 @@
     max-height: 100px;
     margin: 10px 0;
     resize: none;
+
     &::placeholder {
       color: $light-grey;
     }
@@ -30,9 +31,10 @@
     @include button-none;
     padding: 10px;
     color: $blue;
+
     &:disabled {
       cursor: auto;
-      color: rgba($blue, .5);
+      color: rgba($blue, 0.5);
     }
   }
 }

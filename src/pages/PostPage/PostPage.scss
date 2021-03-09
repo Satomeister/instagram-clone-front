@@ -1,0 +1,16 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.full-post__wrapper {
+  display: flex;
+  justify-content: center;
+
+  .full-post {
+    margin-top: 4vh;
+    border: 1px solid $border-color;
+  }
+
+  .full-post__preloader {
+    height: calc(100vh - 150px);
+  }
+}

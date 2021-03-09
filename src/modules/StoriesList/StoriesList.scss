@@ -19,4 +19,8 @@
   background: $white;
   overflow: hidden;
   scroll-behavior: smooth;
+
+  &__empty-text {
+    padding-left: 20px;
+  }
 }

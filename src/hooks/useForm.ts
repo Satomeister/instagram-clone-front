@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect, useState} from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 const EMAIL_REGEXP = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
@@ -21,16 +21,19 @@ export const useForm = (config: any) => {
   });
 
   useEffect(() => {
-    Object.keys(config.fields).forEach(fieldName => {
-      setFormState(prev => {
+    Object.keys(config.fields).forEach((fieldName) => {
+      setFormState((prev) => {
         return {
           ...prev,
-          values: {...prev.values, [fieldName]: config.fields[fieldName].initialValue}
-        }
-      })
-    })
+          values: {
+            ...prev.values,
+            [fieldName]: config.fields[fieldName].initialValue,
+          },
+        };
+      });
+    });
     //eslint-disable-next-line
-  }, [])
+  }, []);
 
   const updateErrorState = (fieldName: string, message: string) => {
     setFormState((prev) => {
@@ -101,7 +104,9 @@ export const useForm = (config: any) => {
     errors: formState.errors,
     values: formState.values,
     getFieldProps: (fieldName: string) => ({
-      onChange: (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
+      onChange: (
+        e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+      ) => {
         checkField(config.fields[fieldName].validations, fieldName, e);
 
         if (config.fields[fieldName]) {

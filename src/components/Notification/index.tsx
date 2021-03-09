@@ -8,9 +8,13 @@ interface NotificationProps {
 
 const Notification: FC<NotificationProps> = ({ text }): JSX.Element => {
   return (
-    <div className="notification">
-      <p className="notification__text">{text}</p>
-    </div>
+    <>
+      {!!text && (
+        <div className="notification">
+          <p className="notification__text">{text}</p>
+        </div>
+      )}
+    </>
   );
 };
 

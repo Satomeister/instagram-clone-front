@@ -1,20 +1,20 @@
 import React, { FC } from "react";
+import { useSelector } from "react-redux";
+import { Link, Route, Switch } from "react-router-dom";
 import {
   IoHomeOutline as HomeIcon,
   IoHomeSharp as HomeIconFilled,
 } from "react-icons/all";
-import { Link, Route, Switch } from "react-router-dom";
 
 import "./Header.scss";
 
 import logo from "../../assets/logo.png";
-import { GlobalSearchInput } from "../index";
-import { useSelector } from "react-redux";
+
 import {
   selectIsAuth,
   selectAuthUserData,
-} from "../../store/ducks/user/selectors";
-import { ActivityBar, UserDropdown } from "./components";
+} from "../../store/ducks/authUser/selectors";
+import { ActivityBar, GlobalSearch, UserDropdown } from "./components";
 
 const Header: FC = (): JSX.Element => {
   const isAuth = useSelector(selectIsAuth);
@@ -26,7 +26,7 @@ const Header: FC = (): JSX.Element => {
         <Link to="/" className="header__logo">
           <img src={logo} alt="logo" />
         </Link>
-        <GlobalSearchInput />
+        <GlobalSearch />
         <div className="header-navigation">
           {isAuth ? (
             <>

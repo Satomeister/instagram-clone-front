@@ -1,0 +1,251 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.profile {
+  max-width: 950px;
+  width: 100%;
+  margin: 54px auto 0;
+  padding: 0 12.5px;
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    padding: 34px;
+    border-bottom: 1px solid $border-color;
+
+    .profile__avatar {
+      margin: 0 80px 0 40px;
+
+      &--withborder {
+        position: relative;
+        cursor: pointer;
+        z-index: 3;
+      }
+
+      &-border {
+        position: absolute;
+        left: -5.5px;
+        right: 0;
+        top: -5.5px;
+        bottom: 0;
+      }
+    }
+
+    &-username {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      h2 {
+        font-size: 28px;
+        font-weight: 300;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .profile-follow__button {
+        font-size: 14px;
+        margin-left: 20px;
+      }
+
+      .edit-profile__button {
+        font-size: 14px;
+        margin-left: 10px;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      padding: 23px 0;
+    }
+
+    &-actions-item {
+      &:first-child {
+        cursor: auto;
+      }
+
+      cursor: pointer;
+
+      span:first-child {
+        font-weight: 700;
+        padding-right: 5px;
+      }
+
+      margin-right: 40px;
+    }
+
+    &-fullname {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    &-about {
+      width: 330px;
+      margin-top: 2px;
+      font-size: 16px;
+      line-height: 24px;
+      word-wrap: break-word;
+    }
+  }
+
+  &__bottom {
+    &-navigation {
+      display: flex;
+      justify-content: center;
+
+      &-list {
+        display: flex;
+        justify-content: space-between;
+        width: 160px;
+      }
+
+      &-item {
+        a {
+          display: flex;
+          align-items: center;
+          padding-top: 16px;
+
+          &.item-active {
+            position: relative;
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              right: 0;
+              left: 0;
+              height: 1px;
+              background: $black;
+              z-index: 1;
+            }
+
+            path {
+              color: $black;
+            }
+
+            span {
+              color: $black;
+            }
+          }
+
+          svg {
+            path {
+              color: $light-grey;
+            }
+
+            font-size: 16px;
+          }
+
+          span {
+            margin-left: 4px;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: $light-grey;
+          }
+        }
+      }
+    }
+  }
+}
+
+.profile-posts {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.empty-posts {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: $white;
+
+  &__image {
+    max-width: 380px;
+    width: 100%;
+    height: auto;
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .button {
+      font-size: 16px;
+    }
+  }
+}
+
+.empty-saved {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 70px;
+  align-items: center;
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    border: 3px solid rgba($black, 0.9);
+    border-radius: 50%;
+
+    svg {
+      font-size: 30px;
+    }
+  }
+
+  &__content {
+    text-align: center;
+
+    h2 {
+      margin: 15px 0 10px;
+      font-size: 28px;
+      font-weight: 300;
+    }
+
+    p {
+      width: 360px;
+    }
+  }
+}
+
+.unauth-modal {
+  padding: 30px 0 0;
+
+  h3 {
+    font-size: 22px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  a {
+    display: block;
+    height: 37px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    padding-left: 15px;
+    border-top: 1px solid $border-color;
+    text-align: center;
+    line-height: 37px;
+    font-size: 18px;
+    color: $blue;
+  }
+}

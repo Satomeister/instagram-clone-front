@@ -1,6 +1,6 @@
-import {IShortUser, IUser} from "../../user/contracts/state";
+import { IShortUser, IUser } from "../../authUser/contracts/state";
 
 export interface updateFollowPayload {
-  user: IShortUser,
-  authUserData: IUser
+  user: IShortUser;
+  authUserData: IUser;
 }

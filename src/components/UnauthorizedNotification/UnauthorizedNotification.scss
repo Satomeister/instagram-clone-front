@@ -7,19 +7,22 @@
   left: 0;
   right: 0;
   min-height: 55px;
-  background: rgba($black, .9);
+  background: rgba($black, 0.9);
   backdrop-filter: blur(3px);
   z-index: 11;
+
   &__inner {
     @include flex-sb;
     max-width: 900px;
     width: 100%;
     margin: 0 auto;
     padding: 20px 0;
+
     & > div {
       display: flex;
       align-items: center;
     }
+
     &-content {
       display: flex;
       flex-direction: column;
@@ -38,13 +41,16 @@
         color: $white;
       }
     }
+
     &-actions {
       display: flex;
       flex-direction: column;
+
       .button {
         &:first-child {
           margin-bottom: 10px;
         }
+
         padding-left: 20px;
         padding-right: 20px;
       }

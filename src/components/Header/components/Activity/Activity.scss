@@ -1,0 +1,27 @@
+@import "../../../../styles/vars";
+@import "../../../../styles/mixins";
+
+.activity {
+  @include flex-sb;
+
+  .user-item__data-name {
+    font-weight: 500;
+  }
+
+  &__data {
+    display: flex;
+    align-items: center;
+  }
+
+  &__date {
+    padding-left: 7px;
+    color: $light-grey;
+  }
+
+  &__image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+}

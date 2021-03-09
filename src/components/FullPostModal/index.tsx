@@ -1,48 +1,47 @@
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, { FC, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import "./FullPostModal.scss";
-
-import {
-  PostActions,
-  PostMedia,
-  SendCommentInput,
-} from "../../modules/Post/components";
-import { Avatar, DotsMenu, FullComment } from "../index";
-import { IImage, IVideo } from "../../modules/Post";
 import ModalWrapper from "../ModalWrapper";
+import FullPost from "../FullPost";
+import {
+  selectFetchGetSelectedPostLoadingStatus,
+  selectSelectedPost,
+} from "../../store/ducks/posts/selector";
+import { fetchGetSelectedPost } from "../../store/ducks/posts/actionCreators";
+import { LoadingStatus } from "../../store/types";
+import { Preloader } from "../index";
+import ModalWindow from "../ModalWindow";
 
 interface FullPostModalProps {
-  username: string;
-  media: IImage[] | IVideo[];
-  handleSetFullPostModalOpen: Dispatch<SetStateAction<boolean>>;
+  postId: string;
+  onClose: () => void;
 }
 
 const FullPostModal: FC<FullPostModalProps> = ({
-  username,
-  media,
-  handleSetFullPostModalOpen,
+  postId,
+  onClose,
 }): JSX.Element => {
+  const dispatch = useDispatch();
+
+  const selectedPost = useSelector(selectSelectedPost);
+  const fetchGetSelectedPostLoadingStatus = useSelector(
+    selectFetchGetSelectedPostLoadingStatus
+  );
+
+  useEffect(() => {
+    dispatch(fetchGetSelectedPost(postId));
+  }, [dispatch, postId]);
+
   return (
-    <ModalWrapper onClose={() => handleSetFullPostModalOpen(false)}>
-      <div className="fullPostModal">
-        <PostMedia username={username} media={media} />
-        <div className="fullPostModal__right">
-          <div className="fullPostModal__info">
-            <div className="fullPostModal__user">
-              <Avatar />
-              <span className="fullPostModal__user-username">{username}</span>
-            </div>
-            <DotsMenu />
-          </div>
-          <div className="fullPostModal__feedback">
-            <ul className="fullPostModal__comments">
-              <FullComment />
-            </ul>
-          </div>
-          <PostActions likesCount={3} />
-          <SendCommentInput />
-        </div>
-      </div>
+    <ModalWrapper onClose={onClose}>
+      {selectedPost &&
+      fetchGetSelectedPostLoadingStatus !== LoadingStatus.LOADING ? (
+        <FullPost post={selectedPost} />
+      ) : (
+        <ModalWindow height={60} width={60}>
+          <Preloader centered size={33} />
+        </ModalWindow>
+      )}
     </ModalWrapper>
   );
 };

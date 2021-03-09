@@ -1,0 +1,8 @@
+@import "../../../../styles/vars";
+@import "../../../../styles/mixins";
+
+.user-info {
+  height: 60px;
+  @include flex-sb;
+  padding: 0 13px;
+}

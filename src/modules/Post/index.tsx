@@ -1,110 +1,156 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { formatDistanceToNowStrict } from "date-fns";
 
 import "./Post.scss";
 
-import {Avatar, DotsMenu, FullPostModal} from "../../components";
+import { FullPostModal, ModalWindow } from "../../components";
+import { IPost } from "../../store/ducks/posts/contracts/state";
 import {
   PostActions,
   PostComments,
   PostMedia,
+  PostUserInfo,
   SendCommentInput,
 } from "./components";
+import ModalWrapper from "../../components/ModalWrapper";
+import { ButtonItem, ButtonList } from "../../components/ModalButtons";
+import { selectAuthUserData } from "../../store/ducks/authUser/selectors";
+import { isFollowing } from "../../utils";
+import {
+  fetchFollow,
+  fetchUnFollow,
+} from "../../store/ducks/users/actionCreators";
 
-export interface IImage {
-  url: string;
-  type: "image";
+interface PostProps {
+  post: IPost;
 }
 
-export interface IVideo {
-  url: string;
-  type: "video";
-}
+const Post: FC<PostProps> = ({ post }): JSX.Element => {
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-export interface IComment {
-  _id: string;
-  text: string;
-  likes?: number;
-  sender: {username: string};
-}
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-export interface IPost {
-  username: string;
-  avatar?: string;
-  media: IImage[] | IVideo[];
-  description?: string;
-  lastComments?: IComment[];
-  commentsCount: number;
-}
-
-const Post: FC<IPost> = ({
-  username,
-  avatar,
-  media,
-  description,
-  lastComments,
-  commentsCount,
-}): JSX.Element => {
   const [fullDescription, setFullDescription] = useState<boolean>(true);
   const [fullPostModalOpen, setFullPostModalOpen] = useState<boolean>(false);
+  const [linksModalOpen, setLinksModalOpen] = useState<boolean>(false);
+  const [previousUrl, setPreviousUrl] = useState<string>("");
 
-  useEffect(() => {
-    if (description && description.length > 40) {
-      setFullDescription(false);
-    }
-  }, [description]);
+  const authUserData = useSelector(selectAuthUserData);
+
+  const handleCommentIconClick = () => {
+    history.push(`/post/${post._id}`);
+  };
+
+  const handleFollow = () => {
+    dispatch(fetchFollow(post.author._id));
+  };
+
+  const handleUnFollow = () => {
+    dispatch(fetchUnFollow(post.author._id));
+  };
+
+  const handleOpenFullPostModal = () => {
+    setPreviousUrl(history.location.pathname);
+    window.history.pushState("", "", `/post/${post._id}`);
+    setFullPostModalOpen(true);
+  };
+
+  const handleCloseFullPostModal = () => {
+    window.history.pushState("", "", previousUrl);
+    setPreviousUrl("");
+    setFullPostModalOpen(false);
+  };
 
   return (
     <>
       {fullPostModalOpen && (
-        <FullPostModal
-          username={username}
-          media={media}
-          handleSetFullPostModalOpen={setFullPostModalOpen}
-        />
+        <FullPostModal postId={post._id} onClose={handleCloseFullPostModal} />
+      )}
+      {linksModalOpen && authUserData && (
+        <ModalWrapper onClose={() => setLinksModalOpen(false)}>
+          <ModalWindow>
+            <ButtonList>
+              {isFollowing(authUserData, post.author._id) ? (
+                <ButtonItem
+                  onButtonClick={handleUnFollow}
+                  color={"red"}
+                  text="Unfollow"
+                  withoutBorder
+                />
+              ) : (
+                <ButtonItem
+                  onButtonClick={handleFollow}
+                  color={"blue"}
+                  text="Follow"
+                  withoutBorder
+                />
+              )}
+              <ButtonItem href={`/post/${post._id}`} text="Go to post" />
+              <ButtonItem
+                href={`/${authUserData.username}`}
+                text="Go to author"
+              />
+              <ButtonItem
+                onButtonClick={() => setLinksModalOpen(false)}
+                text="Cancel"
+              />
+            </ButtonList>
+          </ModalWindow>
+        </ModalWrapper>
       )}
       <div className="post">
-        <div className="post__top">
-          <div className="post__user-info">
-            <Avatar url={avatar} />
-            <span className="post__username">{username}</span>
-          </div>
-          <DotsMenu />
-        </div>
-        <PostMedia username={username} media={media} />
-        <PostActions likesCount={3} />
-        {description && fullDescription ? (
-          <div className="post__description">
-            <span className="post__description-username">{username} </span>
-            <span className="post__description-text">{description}</span>
-            {description.length > 40 && (
+        <PostUserInfo
+          user={post.author}
+          openMenu={() => setLinksModalOpen(true)}
+        />
+        <PostMedia post={post} />
+        <PostActions post={post} onCommentIconClick={handleCommentIconClick} />
+        {post.description ? (
+          fullDescription ? (
+            <div className="post__description">
+              <span className="post__description-username">
+                {post.author.username}{" "}
+              </span>
+              <span className="post__description-text">{post.description}</span>
+              {post.description.length > 40 && (
+                <span
+                  onClick={() => setFullDescription(false)}
+                  className="post__description-more"
+                >
+                  show less
+                </span>
+              )}
+            </div>
+          ) : (
+            <div className="post__description">
+              <span className="post__description-username">
+                {post.author.username}{" "}
+              </span>
+              <span className="post__description-text">
+                {post.description?.slice(0, 40).concat(" ...")}
+              </span>
               <span
-                onClick={() => setFullDescription(false)}
+                onClick={() => setFullDescription(true)}
                 className="post__description-more"
               >
-                show less
+                more
               </span>
-            )}
-          </div>
-        ) : (
-          <div className="post__description">
-            <span className="post__description-username">{username} </span>
-            <span className="post__description-text">
-              {description?.slice(0, 40).concat(" ...")}
-            </span>
-            <span
-              onClick={() => setFullDescription(true)}
-              className="post__description-more"
-            >
-              more
-            </span>
-          </div>
-        )}
+            </div>
+          )
+        ) : null}
         <PostComments
-          handleSetFullPostModalOpen={setFullPostModalOpen}
-          commentsCount={commentsCount}
-          lastComments={lastComments}
+          postId={post._id}
+          commentsCount={post.commentsCount}
+          onOpenFullPostModal={handleOpenFullPostModal}
+          lastComments={post.comments.concat().reverse()}
         />
-        <SendCommentInput />
+        <p className="post__date">
+          {formatDistanceToNowStrict(new Date(post.createdAt))}
+        </p>
+        <SendCommentInput postId={post._id} textareaRef={textareaRef} />
       </div>
     </>
   );

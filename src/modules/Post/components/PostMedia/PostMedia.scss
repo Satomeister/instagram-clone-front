@@ -1,10 +1,80 @@
-.post__content {
+@import "../../../../styles/vars";
+@import "../../../../styles/mixins";
+
+.post-media {
   position: relative;
   width: 100%;
   object-fit: cover;
-  img {
-    width: 100%;
-    height: auto;
-    max-height: 1200px;
+
+  &__file {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    video,
+    img {
+      max-width: 700px;
+      width: 100%;
+      height: auto;
+      max-height: 650px;
+      background: $input-background-color;
+    }
+
+    video {
+      cursor: pointer;
+    }
+  }
+
+  &__play-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+
+    svg {
+      font-size: 60px;
+
+      path {
+        color: $white;
+      }
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+
+    &-item {
+      width: 10px;
+      height: 10px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: rgba($border-color, 0.7);
+
+      &--active {
+        background: $white;
+      }
+    }
+  }
+
+  &__icon-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    svg {
+      font-size: 50px;
+
+      path {
+        color: $white;
+      }
+    }
   }
 }

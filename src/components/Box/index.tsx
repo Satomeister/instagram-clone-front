@@ -20,9 +20,7 @@ const Box: FC<BoxProps> = ({
 
   useEffect(() => {
     const listener = () => {
-      //if (boxRef.current && !boxRef.current.contains(e.target)) {
-        setBoxOpen && setBoxOpen(false);
-      //}
+      setBoxOpen && setBoxOpen(false);
     };
     document.addEventListener("click", listener);
     return () => {
@@ -31,10 +29,14 @@ const Box: FC<BoxProps> = ({
   }, [setBoxOpen]);
 
   return (
-    <div ref={boxRef} style={{ width, height }} className={`box ${className}`}>
+    <div
+      ref={boxRef}
+      style={{ width, height }}
+      className={`box ${className || ""}`}
+    >
       {children}
     </div>
   );
 };
 
-export default Box
+export default Box;
