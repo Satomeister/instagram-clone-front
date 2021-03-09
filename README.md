@@ -9,6 +9,6 @@ React(functional-component) app . Use hooks, no class. Server side was written o
 ## Main libraries
   - React(TypeScript, context, hooks)
   - Redux (react-saga, reselect)
-  - immer
+  - Immer
   - Axios
-  - date-fns
+  - Date-fns
